@@ -57,9 +57,9 @@ const Header = () => {
                 </Link>
                
               </div>
-              <a href="/courses" className="text-foreground hover:text-primary transition-smooth">
+              {/* <a href="/courses" className="text-foreground hover:text-primary transition-smooth">
                 Courses
-              </a>
+              </a> */}
               <Link to="/projects" className={`text-foreground hover:text-primary transition-smooth ${location.pathname === '/projects' ? 'text-primary font-semibold' : ''}`}>
                 Projects
               </Link>
