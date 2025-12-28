@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Phone, Mail, MapPin, ChevronDown } from 'lucide-react';
+import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,7 +27,7 @@ const Header = () => {
             </div>
           </div>
           <div className="text-primary-glow font-semibold">
-            Empowering Technology, Securing Tomorrow
+            Cybersecurity Training Academy
           </div>
         </div>
       </div>
@@ -51,23 +51,11 @@ const Header = () => {
               <Link to="/about" className={`text-foreground hover:text-primary transition-smooth ${location.pathname === '/about' ? 'text-primary font-semibold' : ''}`}>
                 About
               </Link>
-              <div className="relative group">
-                <Link to="/services" className={`text-foreground hover:text-primary transition-smooth flex items-center space-x-1 ${location.pathname === '/services' || location.pathname === '/services-grid' ? 'text-primary font-semibold' : ''}`}>
-                  <span>Services</span>
-                </Link>
-               
-              </div>
-              {/* <a href="/courses" className="text-foreground hover:text-primary transition-smooth">
+              <a href="#courses" className="text-foreground hover:text-primary transition-smooth">
                 Courses
-              </a> */}
-              <Link to="/projects" className={`text-foreground hover:text-primary transition-smooth ${location.pathname === '/projects' ? 'text-primary font-semibold' : ''}`}>
-                Projects
-              </Link>
+              </a>
               <Link to="/team" className={`text-foreground hover:text-primary transition-smooth ${location.pathname === '/team' ? 'text-primary font-semibold' : ''}`}>
                 Team
-              </Link>
-              <Link to="/blog" className={`text-foreground hover:text-primary transition-smooth ${location.pathname === '/blog' ? 'text-primary font-semibold' : ''}`}>
-                Blog
               </Link>
               <Link to="/faq" className={`text-foreground hover:text-primary transition-smooth ${location.pathname === '/faq' ? 'text-primary font-semibold' : ''}`}>
                 FAQ
@@ -80,10 +68,10 @@ const Header = () => {
             {/* CTA Buttons */}
             <div className="hidden md:flex items-center space-x-4">
               <Button variant="outline" asChild>
-                <Link to="/blog">Start Learning</Link>
+                <a href="#courses">View Courses</a>
               </Button>
               <Button variant="default" asChild>
-                <Link to="/contact">Get Quote</Link>
+                <Link to="/contact">Enroll Now</Link>
               </Button>
             </div>
 
@@ -110,23 +98,11 @@ const Header = () => {
                 <Link to="/about" className={`text-foreground hover:text-primary transition-smooth ${location.pathname === '/about' ? 'text-primary font-semibold' : ''}`} onClick={() => setIsMenuOpen(false)}>
                   About
                 </Link>
-                <Link to="/services" className={`text-foreground hover:text-primary transition-smooth ${location.pathname === '/services' ? 'text-primary font-semibold' : ''}`} onClick={() => setIsMenuOpen(false)}>
-                  Services List
-                </Link>
-                <Link to="/services-grid" className={`text-foreground hover:text-primary transition-smooth ${location.pathname === '/services-grid' ? 'text-primary font-semibold' : ''}`} onClick={() => setIsMenuOpen(false)}>
-                  Services Grid
-                </Link>
                 <a href="#courses" className="text-foreground hover:text-primary transition-smooth" onClick={() => setIsMenuOpen(false)}>
                   Courses
                 </a>
-                <Link to="/projects" className={`text-foreground hover:text-primary transition-smooth ${location.pathname === '/projects' ? 'text-primary font-semibold' : ''}`} onClick={() => setIsMenuOpen(false)}>
-                  Projects
-                </Link>
                 <Link to="/team" className={`text-foreground hover:text-primary transition-smooth ${location.pathname === '/team' ? 'text-primary font-semibold' : ''}`} onClick={() => setIsMenuOpen(false)}>
                   Team
-                </Link>
-                <Link to="/blog" className={`text-foreground hover:text-primary transition-smooth ${location.pathname === '/blog' ? 'text-primary font-semibold' : ''}`} onClick={() => setIsMenuOpen(false)}>
-                  Blog
                 </Link>
                 <Link to="/faq" className={`text-foreground hover:text-primary transition-smooth ${location.pathname === '/faq' ? 'text-primary font-semibold' : ''}`} onClick={() => setIsMenuOpen(false)}>
                   FAQ
@@ -136,10 +112,10 @@ const Header = () => {
                 </Link>
                 <div className="flex flex-col space-y-2 pt-4">
                   <Button variant="outline" className="w-full" asChild>
-                    <Link to="/blog" onClick={() => setIsMenuOpen(false)}>Start Learning</Link>
+                    <a href="#courses" onClick={() => setIsMenuOpen(false)}>View Courses</a>
                   </Button>
                   <Button variant="default" className="w-full" asChild>
-                    <Link to="/contact" onClick={() => setIsMenuOpen(false)}>Get Quote</Link>
+                    <Link to="/contact" onClick={() => setIsMenuOpen(false)}>Enroll Now</Link>
                   </Button>
                 </div>
               </div>

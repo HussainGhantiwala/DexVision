@@ -9,7 +9,8 @@ import {
   Twitter, 
   Linkedin, 
   Instagram,
-  ArrowRight
+  ArrowRight,
+  Shield
 } from 'lucide-react';
 
 const Footer = () => {
@@ -17,23 +18,23 @@ const Footer = () => {
 
   const footerSections = [
     {
-      title: "Training Programs",
+      title: "Cybersecurity Courses",
       links: [
-        { name: "Cybersecurity Training", href: "#cybersecurity" },
-        { name: "AI/ML Training", href: "#aiml" },
-        { name: "Data Science", href: "#datascience" },
-        { name: "Full Stack Development", href: "#fullstack" },
-        { name: "DevOps Training", href: "#devops" }
+        { name: "CS-101: Introduction", href: "#courses" },
+        { name: "CS-201: Ethical Hacking", href: "#courses" },
+        { name: "CS-301: Advanced Pentest", href: "#courses" },
+        { name: "CS-311: SOC Operations", href: "#courses" },
+        { name: "CS-401: Capstone", href: "#courses" }
       ]
     },
     {
-      title: "IT Solutions",
+      title: "Certifications",
       links: [
-        { name: "Cybersecurity Services", href: "#security-services" },
-        { name: "Cloud Solutions", href: "#cloud" },
-        { name: "Custom Development", href: "#development" },
-        { name: "IT Consulting", href: "#consulting" },
-        { name: "Managed Services", href: "#managed" }
+        { name: "CEH v13 AI Prep", href: "#courses" },
+        { name: "OSCP Preparation", href: "#courses" },
+        { name: "CompTIA Security+", href: "#courses" },
+        { name: "Cloud Security", href: "#courses" },
+        { name: "SOC Analyst", href: "#courses" }
       ]
     },
     {
@@ -42,8 +43,8 @@ const Footer = () => {
         { name: "About Us", href: "/about" },
         { name: "Our Team", href: "/team" },
         { name: "Careers", href: "/contact" },
-        { name: "Blog", href: "/blog" },
-        { name: "Success Stories", href: "/projects" }
+        { name: "Success Stories", href: "/projects" },
+        { name: "Contact", href: "/contact" }
       ]
     },
     {
@@ -51,9 +52,9 @@ const Footer = () => {
       links: [
         { name: "Help Center", href: "/faq" },
         { name: "Contact Support", href: "/contact" },
-        { name: "Course Schedule", href: "/blog" },
-        { name: "Student Portal", href: "/blog" },
-        { name: "Certification", href: "/about" }
+        { name: "Course Schedule", href: "#courses" },
+        { name: "Student Portal", href: "#courses" },
+        { name: "FAQs", href: "/faq" }
       ]
     }
   ];
@@ -73,12 +74,13 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="mb-6">
-              <div className="text-3xl font-bold text-primary mb-4">
+              <div className="flex items-center gap-2 text-3xl font-bold text-primary mb-4">
+                <Shield className="w-8 h-8" />
                 DEXVION
               </div>
               <p className="text-gray-300 leading-relaxed mb-6">
-                Empowering Technology, Securing Tomorrow. We specialize in cutting-edge IT training 
-                and comprehensive cybersecurity solutions for businesses and individuals.
+                Premier Cybersecurity Training Academy. Transform your career with our comprehensive 
+                4-level certification program. CEH, OSCP, and industry certifications.
               </p>
             </div>
 
@@ -110,7 +112,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="text-white font-medium">Bangalore, India</p>
-                  <p className="text-sm text-gray-400">Tech Capital of India</p>
+                  <p className="text-sm text-gray-400">Cybersecurity Training Hub</p>
                 </div>
               </div>
             </div>
@@ -166,10 +168,10 @@ const Footer = () => {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl font-bold text-white mb-4">
-                Stay Updated with Latest Tech Trends
+                Stay Updated with Cybersecurity Trends
               </h3>
               <p className="text-gray-300">
-                Get exclusive insights, course updates, and cybersecurity tips delivered to your inbox.
+                Get exclusive insights, course updates, and cybersecurity career tips delivered to your inbox.
               </p>
             </div>
             
@@ -193,7 +195,7 @@ const Footer = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-gray-400">
-              © {currentYear} Dexvion. All rights reserved. | Empowering Technology, Securing Tomorrow.
+              © {currentYear} Dexvion Academy. All rights reserved. | Cybersecurity Training Excellence
             </div>
             
             <div className="flex space-x-6 text-sm text-gray-400">

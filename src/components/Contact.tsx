@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Badge } from '@/components/ui/badge';
 import { 
   Phone, 
   Mail, 
@@ -12,10 +11,17 @@ import {
   Send,
   MessageCircle,
   Calendar,
-  ArrowRight
+  ArrowRight,
+  Shield
 } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Contact = () => {
+  const headerAnimation = useScrollAnimation();
+  const infoAnimation = useScrollAnimation();
+  const formAnimation = useScrollAnimation();
+  const ctaAnimation = useScrollAnimation();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,7 +32,6 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
     console.log('Form submitted:', formData);
   };
 
@@ -68,28 +73,39 @@ const Contact = () => {
     <section id="contact" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-6">
+        <div 
+          ref={headerAnimation.ref}
+          className={`text-center mb-16 transition-all duration-700 ${
+            headerAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-6">
+            <Shield className="w-4 h-4" />
             Let's Talk
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Ready to Start Your <br />
-            <span className="text-primary">Tech Journey?</span>
+            <span className="text-primary">Cybersecurity Journey?</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Whether you're looking for IT solutions for your business or want to boost your career with training, 
-            Dexvion is here to help.
+            Whether you're starting your cybersecurity career or looking to advance with CEH/OSCP certifications, 
+            Dexvion Academy is here to guide you.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Information */}
-          <div>
+          <div
+            ref={infoAnimation.ref}
+            className={`transition-all duration-700 ${
+              infoAnimation.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+            }`}
+          >
             <div className="mb-12">
               <h3 className="text-2xl font-bold text-foreground mb-6">Get in Touch</h3>
               <p className="text-muted-foreground mb-8">
-                Have questions about our courses or need a custom IT solution? 
-                Our team is ready to help you achieve your technology goals.
+                Have questions about our cybersecurity courses or certification programs? 
+                Our team is ready to help you achieve your career goals.
               </p>
               
               {/* Contact Cards */}
@@ -121,8 +137,8 @@ const Contact = () => {
               <div className="bg-hero-gradient rounded-xl p-6 text-white">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h4 className="font-semibold mb-2">Quick Consultation</h4>
-                    <p className="text-sm text-gray-200">Schedule a free 15-minute call</p>
+                    <h4 className="font-semibold mb-2">Free Career Consultation</h4>
+                    <p className="text-sm text-gray-200">Discuss your cybersecurity career path</p>
                   </div>
                   <Button variant="secondary" size="sm">
                     <Calendar className="w-4 h-4 mr-2" />
@@ -147,7 +163,12 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-card-gradient rounded-2xl p-8 shadow-card border border-border">
+          <div 
+            ref={formAnimation.ref}
+            className={`bg-card-gradient rounded-2xl p-8 shadow-card border border-border transition-all duration-700 delay-200 ${
+              formAnimation.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+            }`}
+          >
             <div className="mb-8">
               <h3 className="text-2xl font-bold text-foreground mb-2">Send us a Message</h3>
               <p className="text-muted-foreground">
@@ -203,7 +224,7 @@ const Contact = () => {
 
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
-                  Service Interest *
+                  Course Interest *
                 </label>
                 <select
                   name="service"
@@ -212,12 +233,16 @@ const Contact = () => {
                   required
                   className="w-full h-12 px-3 border border-input bg-background rounded-lg focus:outline-none focus:ring-2 focus:ring-ring"
                 >
-                  <option value="">Select a service</option>
-                  <option value="cybersecurity-training">Cybersecurity Training</option>
-                  <option value="aiml-training">AI/ML Training</option>
-                  <option value="data-science">Data Science Training</option>
-                  <option value="it-solutions">IT Solutions</option>
-                  <option value="custom-training">Custom Training</option>
+                  <option value="">Select a course</option>
+                  <option value="cs-101">CS-101: Introduction to Cyber Security</option>
+                  <option value="cs-102">CS-102: Networking Essentials</option>
+                  <option value="cs-201">CS-201: Ethical Hacking Essentials (CEH Prep)</option>
+                  <option value="cs-202">CS-202: Digital Forensics & Incident Response</option>
+                  <option value="cs-301">CS-301: Advanced Penetration Testing (OSCP Prep)</option>
+                  <option value="cs-311">CS-311: SIEM & SOC Operations</option>
+                  <option value="cs-321">CS-321: Cloud Security Architecture</option>
+                  <option value="cs-401">CS-401: Capstone Project / Internship</option>
+                  <option value="full-program">Complete Certification Program</option>
                   <option value="consultation">General Consultation</option>
                 </select>
               </div>
@@ -230,7 +255,7 @@ const Contact = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell us about your requirements, goals, or any questions you have..."
+                  placeholder="Tell us about your background, goals, or any questions you have..."
                   required
                   rows={5}
                   className="resize-none"
@@ -250,22 +275,27 @@ const Contact = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="mt-20 bg-muted rounded-3xl p-12 text-center">
+        <div 
+          ref={ctaAnimation.ref}
+          className={`mt-20 bg-muted rounded-3xl p-12 text-center transition-all duration-700 ${
+            ctaAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h3 className="text-3xl font-bold text-foreground mb-4">
             Still Have Questions?
           </h3>
           <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Check out our frequently asked questions or browse our course catalog to learn more about our offerings.
+            Check out our frequently asked questions or browse our cybersecurity course catalog to learn more.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="outline" size="lg" asChild>
               <Link to="/faq">View FAQ</Link>
             </Button>
             <Button variant="default" size="lg" className="group" asChild>
-              <Link to="/blog">
+              <a href="#courses">
                 Browse Courses
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </a>
             </Button>
           </div>
         </div>

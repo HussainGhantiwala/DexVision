@@ -1,58 +1,64 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Check, Star } from 'lucide-react';
+import { Check, Star, Shield } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Pricing = () => {
+  const headerAnimation = useScrollAnimation();
+  const cardsAnimation = useScrollAnimation();
+  const infoAnimation = useScrollAnimation();
+
   const plans = [
     {
-      name: "Basic Training",
-      price: "₹15,999",
-      period: "/course",
-      description: "Perfect for individuals starting their tech journey",
+      name: "Foundation Track",
+      price: "₹25,999",
+      period: "/2 courses",
+      description: "Perfect for beginners starting their cybersecurity journey",
       features: [
-        "Access to 1 course of choice",
-        "Basic project assignments", 
-        "Community forum access",
-        "Email support",
-        "Course completion certificate",
+        "CS-101 & CS-102 courses",
+        "Networking & Security Fundamentals", 
+        "Hands-on Labs Access",
+        "Community Forum Access",
+        "Email Support",
+        "Course Completion Certificate",
         "3 months access"
       ],
       popular: false,
       color: "primary"
     },
     {
-      name: "Professional Package",
-      price: "₹39,999",
-      period: "/3 courses",
-      description: "Most popular choice for career advancement",
+      name: "Professional Track",
+      price: "₹79,999",
+      period: "/4 courses",
+      description: "Most popular - CEH & Ethical Hacking focused",
       features: [
-        "Access to any 3 courses",
-        "Advanced hands-on projects",
-        "1-on-1 mentor sessions",
-        "Priority support",
-        "Industry certifications",
+        "All Foundation Track content",
+        "CS-201: Ethical Hacking Essentials",
+        "CS-202: DFIR Training",
+        "CEH v13 AI Exam Preparation",
+        "1-on-1 Mentor Sessions",
+        "Priority Support",
         "6 months access",
-        "Job placement assistance",
-        "Portfolio review"
+        "Job Placement Assistance"
       ],
       popular: true,
       color: "accent"
     },
     {
-      name: "Enterprise Solution",
-      price: "₹99,999",
-      period: "/team",
-      description: "Comprehensive training for teams and organizations",
+      name: "Expert Track",
+      price: "₹1,49,999",
+      period: "/complete",
+      description: "Complete 4-level certification with internship",
       features: [
-        "Access to all courses",
-        "Custom training modules",
-        "Dedicated account manager",
-        "24/7 priority support",
-        "Team progress tracking",
+        "All 8 courses included",
+        "OSCP Preparation Support",
+        "CS-401 Capstone & Internship",
+        "Dedicated Account Manager",
+        "24/7 Priority Support",
         "12 months access",
-        "On-site training options",
-        "Security consulting included"
+        "Guaranteed Internship",
+        "100% Placement Assistance"
       ],
       popular: false,
       color: "primary"
@@ -63,21 +69,32 @@ const Pricing = () => {
     <section id="pricing" className="py-24 bg-muted/30">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-6">
+        <div 
+          ref={headerAnimation.ref}
+          className={`text-center mb-16 transition-all duration-700 ${
+            headerAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-6">
+            <Shield className="w-4 h-4" />
             Pricing Plans
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Our Affordable Pricing Plans <br />
-            <span className="text-primary">For IT Training</span>
+            Cybersecurity Training <br />
+            <span className="text-primary">Investment Plans</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose the perfect plan to accelerate your career in technology. All plans include industry-aligned curriculum and expert instruction.
+            Choose the perfect track to accelerate your cybersecurity career. All plans include industry certifications preparation and expert instruction.
           </p>
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div 
+          ref={cardsAnimation.ref}
+          className={`grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto transition-all duration-700 delay-200 ${
+            cardsAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           {plans.map((plan, index) => (
             <div 
               key={index}
@@ -86,6 +103,7 @@ const Pricing = () => {
                   ? 'border-primary scale-105 lg:scale-110' 
                   : 'border-border'
               }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Popular Badge */}
               {plan.popular && (
@@ -146,7 +164,7 @@ const Pricing = () => {
                 asChild
               >
                 <Link to="/contact">
-                  {plan.name === "Enterprise Solution" ? "Contact Sales" : "Select This Plan"}
+                  {plan.name === "Expert Track" ? "Contact for Enrollment" : "Enroll Now"}
                 </Link>
               </Button>
 
@@ -154,7 +172,7 @@ const Pricing = () => {
               {plan.popular && (
                 <div className="mt-4 text-center">
                   <span className="text-sm text-muted-foreground">
-                    🎉 Save 30% with this package
+                    🎉 Includes CEH v13 AI Exam Prep
                   </span>
                 </div>
               )}
@@ -163,39 +181,44 @@ const Pricing = () => {
         </div>
 
         {/* Additional Information */}
-        <div className="mt-16 text-center">
+        <div 
+          ref={infoAnimation.ref}
+          className={`mt-16 text-center transition-all duration-700 delay-300 ${
+            infoAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">💰</span>
+                <span className="text-2xl">🔒</span>
               </div>
-              <h4 className="font-semibold text-foreground mb-2">Money Back Guarantee</h4>
-              <p className="text-sm text-muted-foreground">30-day full refund if not satisfied</p>
+              <h4 className="font-semibold text-foreground mb-2">Industry Certifications</h4>
+              <p className="text-sm text-muted-foreground">CEH, OSCP & CompTIA prep included</p>
             </div>
             
             <div className="text-center">
               <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">📱</span>
+                <span className="text-2xl">🛠️</span>
               </div>
-              <h4 className="font-semibold text-foreground mb-2">Lifetime Access</h4>
-              <p className="text-sm text-muted-foreground">Access course materials anytime, anywhere</p>
+              <h4 className="font-semibold text-foreground mb-2">Hands-On Labs</h4>
+              <p className="text-sm text-muted-foreground">Real-world CTF challenges & scenarios</p>
             </div>
             
             <div className="text-center">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🏆</span>
+                <span className="text-2xl">💼</span>
               </div>
-              <h4 className="font-semibold text-foreground mb-2">Industry Certification</h4>
-              <p className="text-sm text-muted-foreground">Recognized certificates upon completion</p>
+              <h4 className="font-semibold text-foreground mb-2">Job Placement</h4>
+              <p className="text-sm text-muted-foreground">100% placement assistance provided</p>
             </div>
           </div>
 
           <div className="mt-12">
             <p className="text-muted-foreground mb-4">
-              Need a custom training solution for your organization?
+              Need a custom corporate training solution?
             </p>
             <Button variant="outline" size="lg" asChild>
-              <Link to="/contact">Contact Us for Custom Pricing</Link>
+              <Link to="/contact">Contact Us for Corporate Pricing</Link>
             </Button>
           </div>
         </div>
