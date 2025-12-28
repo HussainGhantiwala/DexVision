@@ -58,7 +58,7 @@ const Contact = () => {
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Office",
-      details: "Bangalore, India",
+      details: "Pune, India",
       action: "Get directions"
     },
     {

@@ -111,7 +111,7 @@ const Footer = () => {
                   <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-white font-medium">Bangalore, India</p>
+                  <p className="text-white font-medium">Pune, India</p>
                   <p className="text-sm text-gray-400">Cybersecurity Training Hub</p>
                 </div>
               </div>
